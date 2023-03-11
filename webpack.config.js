@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HandlebarsPlugin = require('handlebars-webpack-plugin') ;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -31,8 +32,11 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|jpeg|svg)$/,
-                type: "asset/resource",
+                test: /\.(png|jpg|jpeg|svg)$/i,
+                type: "asset/resource", 
+                generator: {
+                    filename: "assets/images/[name][ext]",
+                },
               },
               {
                 test: /\.(ttf|woff|woff2|eot)$/,
@@ -48,7 +52,22 @@ module.exports = {
         ]
     },
     plugins: [
-       
+       new CopyWebpackPlugin({
+        patterns: [
+            {
+                context: "./src/",
+                from: "./assets/images/**/*",
+                to:"./",
+                force: true
+            },
+            // {
+            //     context: "./src/",
+            //     from: "./assets/fonts/**/*",
+            //     to:"./",
+            //     force: true
+            // }
+        ]
+       }),
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
@@ -67,7 +86,12 @@ module.exports = {
             host: 'localhost',
             port: 5000,
             server: { baseDir: ['dist'] },
-          })
+          }),
+          new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+          }),
     ],
 
 }
