@@ -23,12 +23,13 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.scss$/i,
                 include: path.resolve(__dirname, 'src'),
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'postcss-loader',
+                    'sass-loader',
                 ],
             },
             {
@@ -69,7 +70,7 @@ module.exports = {
         ]
        }),
         new MiniCssExtractPlugin({
-            filename: "[name].css"
+            filename: "assets/css/[name].css"
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
