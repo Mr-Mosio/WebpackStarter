@@ -1,9 +1,36 @@
-{{> base/head }}
+{{#> base/layout }}
 
-    <section class="h-screen bg-slate-800 flex flex-col text-white items-center justify-center">
-        
-        <span>Author: <a href="#">mostafa fallahi</a></span>
+    {{> main/header }}
+
+    <section class="container">
+
+        <section class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide group relative">
+                        <img src="assets/images/sliders/01.png" class="w-full" alt="">
+                        <div class="absolute inset-0 flex flex-col justify-center text-center text-white gap-2">
+                            <img src="assets/images/brand/logo-orange.png" class="w-44 mx-auto transition-all duration-300 opacity-0 transform translate-y-10 group-[.is-active]:translate-y-0  group-[.is-active]:opacity-100" alt="">
+                            <h2 class="transition-all opacity-0 group-[.is-active]:opacity-100 duration-300 text-5xl font-bold uppercase mt-3">Meet</h2>
+                            <h1 class="transition-all opacity-0 group-[.is-active]:opacity-100 duration-300 text-4xl font-semibold mt-3">میت میز کارآفرینان خاورمیانه</h1>
+                            <div class="mt-5 flex items-center justify-center">
+                                <a href="#" class="rounded-xl text-white transition-all duration-300 opacity-0 scale-50 group-[.is-active]:scale-100 group-[.is-active]:opacity-100  bg-gradient-to-r from-orange-first to-orange-last py-2 px-4">به میت بپیوندید</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="splide__slide group relative">
+                        <img src="assets/images/sliders/01.png" class="w-full" alt="">
+                    </li>
+                </ul>
+            </div>
+        </section>
 
     </section>
 
-{{> base/foot }}
+    <section class="h-screen"></section>
+
+
+{{/base/layout}}
+
+
+
