@@ -8,6 +8,10 @@ module.exports = {
         center: true
       },
       colors: {
+        primary: {
+          DEFAULT : "#1D203A",
+          two: "#5774DC",
+        },
         gray: {
           30: "#1D203A4D"
         },
